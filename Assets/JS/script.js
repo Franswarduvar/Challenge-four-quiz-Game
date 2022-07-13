@@ -1,1 +1,2 @@
-console.log("Hello world");
+var header = document.querySelector(".header");
+var start = document.querySelector(".start");
