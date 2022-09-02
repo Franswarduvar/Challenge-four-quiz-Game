@@ -1,22 +1,23 @@
-function createhighscore(){
+function createhighscore() {
     var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
 
-    highscores.sort(function(a, b){
+    highscores.sort(function (a, b) {
         return b.score - a.score;
     });
-
-highscores.array.forEach(element => {
-    var Tag = document.createElement("Tag");
-    Tag.textContent = score.initials + score.score;
-    var element = document.getElementById("highscores");
-    element.appendChild(Tag);
-});
+    console.log(highscores);
+    
+    for(let i=0; i< highscores.length; i++){
+        var liTag = document.createElement("li");
+        liTag.textContent = highscores[i].initials +" - "+ highscores[i].score;
+        var element = document.getElementById("Highscores");
+        element.appendChild(liTag);
+    }
 }
 
-document.getElementById("clear").onclick = clearscore;
-
-function clearscore(){
+function clearscore() {
     window.localStorage.removeItem("highscores");
     window.location.reload();
 }
-printhighscores();
+createhighscore();
+
+document.getElementById("Sweeper").onclick = clearscore;
